@@ -1,2 +1,3 @@
 prowler
 
+gtk3-widget-factory &
