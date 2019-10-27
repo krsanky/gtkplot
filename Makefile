@@ -1,4 +1,4 @@
-#CFLAGS=		-W -Wall -O2 -std=c99 -g
+CFLAGS=		-W -Wall -O2 -std=c99 -g
 #LDFLAGS=	-lncurses
 
 all= prowler
@@ -23,6 +23,13 @@ prowler: src/main.c
 		`pkgconf -libs gtk+-3.0` -rdynamic -Wall
 	#$(CC) $(CFLAGS) triangle.c $(LDFLAGS) -o triangle
 
+#CFLAGS+= -I/usr/local/include/gtk-3.0
+#CFLAGS+= -I/usr/local/include/glib-2.0
+#CFLAGS+= -I/usr/local/lib/glib-2.0/include
+CFLAGS+= `pkgconf -cflags gtk+-3.0` 
+testgtk: src/${@}.c
+	$(CC) $(CFLAGS) src/${@}.c $(LDFLAGS) -o $@
+
 test:
 	@echo "CC:$(CC)"
 	@echo "CFLAGS:$(CFLAGS)"
@@ -32,5 +39,6 @@ test:
     
 clean:
 	rm -f *.o prowler
+	rm -f testgtk
 
 
