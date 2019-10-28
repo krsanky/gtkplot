@@ -30,7 +30,7 @@ main(int argc, char *argv[])
 }
 
 /* called when button is clicked */
-void
+G_MODULE_EXPORT void
 on_btn_hello_clicked()
 {
 	static unsigned int count = 0;
@@ -42,14 +42,14 @@ on_btn_hello_clicked()
 	gtk_label_set_text(GTK_LABEL(g_lbl_count), str_count);
 }
 
-void
+G_MODULE_EXPORT void
 on_btn_close_clicked()
 {
 	gtk_main_quit();
 }
 
 /* called when window is closed */
-void
+G_MODULE_EXPORT void
 on_window_main_destroy()
 {
 	gtk_main_quit();
