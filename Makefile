@@ -1,5 +1,6 @@
-CFLAGS=		-W -Wall -O2 -std=c99 -g
-#LDFLAGS=	-lncurses
+CFLAGS+=		-W -Wall -O2 -std=c99 -g
+CFLAGS+=	`pkgconf -cflags gtk+-3.0` 
+LDFLAGS+=	`pkg-config --libs gtk+-3.0`
 
 all= prowler
 
@@ -26,7 +27,6 @@ prowler: src/main.c
 #CFLAGS+= -I/usr/local/include/gtk-3.0
 #CFLAGS+= -I/usr/local/include/glib-2.0
 #CFLAGS+= -I/usr/local/lib/glib-2.0/include
-CFLAGS+= `pkgconf -cflags gtk+-3.0` 
 testgtk: src/${@}.c
 	$(CC) $(CFLAGS) src/${@}.c $(LDFLAGS) -o $@
 
