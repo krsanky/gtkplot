@@ -29,10 +29,10 @@ main(int argc, char *argv[])
 	return 0;
 }
 
-/* called when button is clicked */
 void
 on_btn_hello_clicked()
 {
+	/* static yay! */
 	static unsigned int count = 0;
 	char		str_count[30] = {0};
 
