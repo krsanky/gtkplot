@@ -7,7 +7,7 @@ CFLAGS+=	-Iinclude # -I is preprcessor flag
 
 LDFLAGS+=	`pkg-config --libs gtk+-3.0`
 
-all= gtkplot
+all: test_geom2d gtkplot
 
 gtkplot: src/main.c
 	$(CC) $(CFLAGS) src/main.c $(LDFLAGS) -o $@
@@ -26,7 +26,7 @@ test:
 .PHONY: clean test all
     
 clean:
-	rm -f *.o prowler gtkplot
+	rm -f *.o gtkplot
 	rm -f testgtk
 	rm -f test_geom2d
 	rm -f *.BAK *.core
