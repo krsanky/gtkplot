@@ -1,2 +1,4 @@
 prowler
 testgtk
+gtkplot
+*.core
