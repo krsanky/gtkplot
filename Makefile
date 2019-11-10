@@ -12,6 +12,9 @@ all: test_geom2d gtkplot
 gtkplot: src/main.c
 	$(CC) $(CFLAGS) src/main.c $(LDFLAGS) -o $@
 
+draw1: src/$@.c
+	$(CC) $(CFLAGS) src/$@.c $(LDFLAGS) -o $@
+
 testgtk: src/${@}.c
 	$(CC) $(CFLAGS) src/${@}.c $(LDFLAGS) -o $@
 
@@ -28,7 +31,7 @@ test:
 clean:
 	rm -f *.o gtkplot
 	rm -f testgtk
-	rm -f test_geom2d
+	rm -f test_geom2d draw1
 	rm -f *.BAK *.core
 
 
