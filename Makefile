@@ -7,7 +7,7 @@ CFLAGS+=	-Iinclude # -I is preprcessor flag
 
 LDFLAGS+=	`pkg-config --libs gtk+-3.0`
 
-all: test_geom2d gtkplot
+all: test_geom2d gtkplot draw1
 
 gtkplot: src/main.c
 	$(CC) $(CFLAGS) src/main.c $(LDFLAGS) -o $@
@@ -31,7 +31,8 @@ test:
 clean:
 	rm -f *.o gtkplot
 	rm -f testgtk
-	rm -f test_geom2d draw1
+	rm -f test_geom2d
+	rm -f draw1
 	rm -f *.BAK *.core
 
 
