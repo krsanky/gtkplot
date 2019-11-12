@@ -126,8 +126,7 @@ close_window(void)
 }
 
 static void
-activate(GtkApplication * app,
-	 gpointer user_data)
+activate(GtkApplication * app, gpointer user_data)
 {
 	GtkWidget      *window;
 	GtkWidget      *frame;
@@ -175,8 +174,7 @@ activate(GtkApplication * app,
 }
 
 int
-main(int argc,
-     char **argv)
+main(int argc, char **argv)
 {
 	GtkApplication *app;
 	int		status;
