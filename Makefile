@@ -11,7 +11,7 @@ VAR1=	"qwe"
 CFLAGS+=	`pkgconf --cflags gtk+-3.0` 
 
 CFLAGS+=	-rdynamic 
-#CFLAGS+=	-Iinclude # -I is preprcessor flag
+CFLAGS+=	-Iinclude # -I is preprcessor flag
 
 #FLAGS+=	-pthread -pipe
 
