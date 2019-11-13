@@ -17,3 +17,7 @@
 
 
 gtk3-widget-factory &
+
+
+https://developer.gnome.org/gtk3/stable/GtkBuilder.html#gtk-builder-connect-signals
+

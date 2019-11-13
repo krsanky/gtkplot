@@ -8,6 +8,9 @@ CFLAGS+=	-Iinclude # -I is preprcessor flag
 #FLAGS+=	-pthread -pipe
 
 LDFLAGS+=	`pkg-config --libs gtk+-3.0`
+#LDFLAGS+=	-export-dynamic
+#LDFLAGS+=	--export-all-symbols
+#LDFLAGS+=	-rdynamic 
 
 all: test_geom2d gtkplot draw1
 

@@ -46,6 +46,7 @@ clear_surface(void)
 	cairo_destroy(cr);
 }
 
+/* called when button is clicked */
 G_MODULE_EXPORT void
 on_btn_hello_clicked()
 {
