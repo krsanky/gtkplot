@@ -3,7 +3,6 @@ CFLAGS+=	-W -Wall -std=c99 -g -pedantic
 
 CFLAGS+=	`pkg-config --cflags gtk+-3.0` 
 
-CFLAGS+=	-rdynamic 
 #CFLAGS+=	-Iinclude # -I is preprcessor flag
 
 #FLAGS+=	-pthread -pipe
