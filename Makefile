@@ -1,6 +1,8 @@
+#CFLAGS+=	-W -Wall -O2 -std=c99 -g
+#CFLAGS+=	`pkgconfig --cflags gtk+-3.0` 
 CFLAGS+=	-W -Wall -std=c99 -g -pedantic
-CFLAGS+=	`pkgconf -cflags gtk+-3.0` 
-CFLAGS+=	-rdynamic 
+CFLAGS+=	`pkg-config --cflags gtk+-3.0` 
+#CFLAGS+=	-rdynamic 
 CFLAGS+=	-Iinclude # -I is preprcessor flag
 
 #FLAGS+=	-pthread -pipe
@@ -34,5 +36,6 @@ clean:
 	rm -f test_geom2d
 	rm -f draw1
 	rm -f *.BAK *.core
+	rm -f *.exe
 
 
