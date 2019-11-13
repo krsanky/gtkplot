@@ -1,0 +1,29 @@
+#CFLAGS+=	-W -Wall -O2 -std=c99 -g
+CFLAGS+=	-W -Wall -std=c99 -g -pedantic
+
+CFLAGS+=	`pkg-config --cflags gtk+-3.0` 
+
+CFLAGS+=	-rdynamic 
+#CFLAGS+=	-Iinclude # -I is preprcessor flag
+
+#FLAGS+=	-pthread -pipe
+
+LDFLAGS+=	`pkg-config --libs gtk+-3.0`
+
+#LDFLAGS+=	-export-dynamic
+#LDFLAGS+=	--export-all-symbols
+#LDFLAGS+=	-rdynamic 
+
+all: gtkplot 
+
+gtkplot: src/main.c
+	$(CC) $(CFLAGS) src/main.c $(LDFLAGS) -o $@
+
+.PHONY: clean all 
+    
+clean:
+	rm -f *.o gtkplot
+	rm -f *.BAK *.core
+	rm -f *.exe
+
+

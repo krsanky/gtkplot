@@ -1,18 +1,33 @@
+UNAME:=		`uname`
 #CFLAGS+=	-W -Wall -O2 -std=c99 -g
-#CFLAGS+=	`pkgconfig --cflags gtk+-3.0` 
 CFLAGS+=	-W -Wall -std=c99 -g -pedantic
-CFLAGS+=	`pkg-config --cflags gtk+-3.0` 
-#CFLAGS+=	-rdynamic 
-CFLAGS+=	-Iinclude # -I is preprcessor flag
+
+.if ${UNAME} == "FreeBSD"
+VAR1=	"POP"
+.else
+VAR1=	"qwe"
+.endif
+#CFLAGS+=	`pkg-config --cflags gtk+-3.0` 
+CFLAGS+=	`pkgconf --cflags gtk+-3.0` 
+
+CFLAGS+=	-rdynamic 
+#CFLAGS+=	-Iinclude # -I is preprcessor flag
 
 #FLAGS+=	-pthread -pipe
 
-LDFLAGS+=	`pkg-config --libs gtk+-3.0`
+#LDFLAGS+=	`pkg-config --libs gtk+-3.0`
+LDFLAGS+=	`pkgconf --libs gtk+-3.0`
+
 #LDFLAGS+=	-export-dynamic
 #LDFLAGS+=	--export-all-symbols
 #LDFLAGS+=	-rdynamic 
 
 all: test_geom2d gtkplot draw1
+
+utest:
+	echo ${UNAME}
+	echo $(UNAME)
+	echo ${VAR1}
 
 gtkplot: src/main.c
 	$(CC) $(CFLAGS) src/main.c $(LDFLAGS) -o $@
@@ -31,7 +46,7 @@ test:
 	@echo "CFLAGS:$(CFLAGS)"
 	@echo "LDFLAGS:$(LDFLAGS)"
 
-.PHONY: clean test all
+.PHONY: clean test all utest
     
 clean:
 	rm -f *.o gtkplot

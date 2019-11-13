@@ -47,7 +47,11 @@ clear_surface(void)
 }
 
 /* called when button is clicked */
+#ifdef _WIN32
 G_MODULE_EXPORT void
+#else
+void
+#endif
 on_btn_hello_clicked()
 {
 	/* static yay! */
@@ -60,14 +64,22 @@ on_btn_hello_clicked()
 	gtk_label_set_text(GTK_LABEL(g_lbl_count), str_count);
 }
 
+#ifdef _WIN32
 G_MODULE_EXPORT void
+#else
+void
+#endif
 on_btn_close_clicked()
 {
 	gtk_main_quit();
 }
 
 /* called when window is closed */
+#ifdef _WIN32
 G_MODULE_EXPORT void
+#else
+void
+#endif
 on_window_main_destroy()
 {
 	gtk_main_quit();
