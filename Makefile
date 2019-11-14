@@ -1,29 +1,21 @@
 UNAME:=		`uname`
-#CFLAGS+=	-W -Wall -O2 -std=c99 -g
 CFLAGS+=	-W -Wall -std=c99 -g -pedantic
-
-.if ${UNAME} == "FreeBSD"
-VAR1=	"POP"
-.else
-VAR1=	"qwe"
-.endif
-#CFLAGS+=	`pkg-config --cflags gtk+-3.0` 
 CFLAGS+=	`pkgconf --cflags gtk+-3.0` 
 
 CFLAGS+=	-rdynamic 
+#https://developer.gnome.org/gtk3/stable/GtkBuilder.html#gtk-builder-connect-signals
+# -Wl,--export-dynamic
+
 CFLAGS+=	-Iinclude # -I is preprcessor flag
 
 #FLAGS+=	-pthread -pipe
 
-#LDFLAGS+=	`pkg-config --libs gtk+-3.0`
 LDFLAGS+=	`pkgconf --libs gtk+-3.0`
 
-#LDFLAGS+=	-export-dynamic
-#LDFLAGS+=	--export-all-symbols
-#LDFLAGS+=	-rdynamic 
+BINS=		test_geom2d gtkplot draw1 textview text1
+all: ${BINS}
 
-all: test_geom2d gtkplot draw1
-
+VAR1=		`echo 'var1...'`
 utest:
 	echo ${UNAME}
 	echo $(UNAME)
@@ -31,6 +23,12 @@ utest:
 
 gtkplot: src/main.c
 	$(CC) $(CFLAGS) src/main.c $(LDFLAGS) -o $@
+
+textview: src/$@.c
+	$(CC) $(CFLAGS) src/$@.c $(LDFLAGS) -o $@
+
+text1: src/$@.c
+	$(CC) $(CFLAGS) src/$@.c $(LDFLAGS) -o $@
 
 draw1: src/$@.c
 	$(CC) $(CFLAGS) src/$@.c $(LDFLAGS) -o $@
@@ -49,11 +47,9 @@ test:
 .PHONY: clean test all utest
     
 clean:
-	rm -f *.o gtkplot
-	rm -f testgtk
-	rm -f test_geom2d
-	rm -f draw1
+	rm -f *.o 
 	rm -f *.BAK *.core
 	rm -f *.exe
+	rm -f ${BINS}
 
 
