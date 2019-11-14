@@ -57,6 +57,8 @@
         <child>
           <object class="GtkTextView" id="text_1">
             <property name="name">text_1</property>
+            <property name="width_request">100</property>
+            <property name="height_request">20</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="monospace">True</property>

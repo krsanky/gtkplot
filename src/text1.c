@@ -6,6 +6,8 @@ main(int argc, char *argv[])
 {
 	GtkBuilder     *builder;
 	GtkWidget      *window;
+	GtkWidget      *textview;
+	GtkTextBuffer  *textbuf;
 	char	       *builder_file = "glade/text1.glade";
 	GError	       *err = NULL;
 
@@ -18,9 +20,24 @@ main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 	window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
+
 	gtk_builder_connect_signals(builder, NULL);
 
+
+
+//	g_lbl_hello = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_hello"));
+	textview = GTK_WIDGET(gtk_builder_get_object(builder, "text_1"));
+	textbuf = gtk_text_view_get_buffer (GTK_TEXT_VIEW(textview));
+
+/*
+	textbuf = gtk_text_buffer_new(NULL);
+	textview = gtk_text_view_new_with_buffer (textbuf);
+*/
+	gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (textview), GTK_WRAP_WORD); 
+	gtk_text_buffer_set_text(textbuf, "This is some text ...\nasd more ...", -1);
+
 	g_object_unref(builder);
+
 
 	gtk_widget_show(window);
 	gtk_main();
@@ -32,6 +49,7 @@ void
 on_btn_1_clicked()
 {
 	printf("asdasd\n");
+	g_message("g_message() from %s\n", "on_btn_1_clicked()");
 }
 
 void
