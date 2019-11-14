@@ -31,7 +31,7 @@ main(int argc, char *argv[])
 void
 on_btn_1_clicked()
 {
-	g_print("asdasd\n");
+	printf("asdasd\n");
 }
 
 void
