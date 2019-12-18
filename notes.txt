@@ -1,3 +1,5 @@
+Get a gtk3 browser in there minimally.
+
 600x600
 
 
